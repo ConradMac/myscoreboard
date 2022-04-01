@@ -1,0 +1,32 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Nouvelle Partie
+{% endblock %}
+
+{% block body %}
+    {#  la Balise Set permet de définir une varaible dans un fichier twig
+    NB : On ne peut pas changer la valeur d'une variable dans twig. Il faut reutiliser la balise set #}
+    <h2>Commencer une nouvelle partie de
+    </h2>
+
+    {# {{♠form()}} #}
+    {{ form_start(form) }}
+
+    {{form_widget(form.players)}}
+
+    <div class="row">
+        <div class="col-3">
+            {{form_label(form.start_date)}}</div>
+        <div class="col-3">{{form_widget(form.start_date, {attr: {class:'text-primary'}})}}</div>
+    </div>
+    {# {{form_errors(form.start_date)}} #}
+    {{form_help(form.start_date)}}
+    <br>
+    <button class='btn btn-secondary'>Commencer la partie</button>
+
+    {{ form_end(form) }}
+
+
+{% endblock %}
+
+{% block footer %}{% endblock %}

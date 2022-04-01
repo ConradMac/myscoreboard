@@ -1,0 +1,51 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    <table class="table table-bordered">
+        <tr>
+            <tr><td>{{ tableau[0] }}</td></tr>
+            <tr><td>{{ tableau[1] }}</td></tr>
+            <tr><td>{{ tableau[2] }}</td></tr>
+            <tr><td>{{ tableau[3] }}</td></tr>
+        </tr>
+    </table>
+
+    <table class="table table-bordered table-striped">
+        {# BOUCLE : balise for
+            {% for variable in debut..fin %}
+            {% endfor %}
+        #}
+        {% for i in 0..3 %}
+            <tr>
+                <td>{{ tableau[i] }}</td>
+            </tr>
+        {% endfor %}
+     </table>
+
+    <table class="table table-bordered table-striped">
+        {# BOUCLE : balise for
+            {% for variable in debut..fin %}
+            {% endfor %}
+        #}
+        {% for i in 0..tableau|length - 1 %}
+            <tr>
+                <td>{{ tableau[i] }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+    {% for car in 'a'..'z' %}
+        {{ car }}
+    {% endfor %}
+
+    {# Equivalent de la boucle php foreach #}
+    {% for valeur in tableau %}
+        {{ valeur }}
+    {% endfor %}
+        
+    {# Equivalent de la boucle php foreach #}
+    {% for indice, valeur in tableau %}
+        <p>{{ indice }} : {{ valeur }}</p>
+        <p>{{ indice }} : {{ tableau[indice] }}</p>
+    {% endfor %}
+{% endblock %}

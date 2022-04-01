@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+    <h1>Register</h1>
+
+    {{ form_start(registrationForm) }}
+
+    {# les form_row sont les champs dans les formulaire 
+    Le formulaire est crée selon la classe qui est use dans le controleur (dans la section createform
+    Tous les champs décralré dans cette classe setont affiché dans le formulaier, qu'ils soient explicitement indiqué dans le fichier twig ou non #}
+        {{ form_row(registrationForm.pseudo) }}
+        {{ form_row(registrationForm.email) }}
+        {{ form_row(registrationForm.plainPassword, {
+            
+            label: 'Mot de passe',
+            help: '6 caracteres minimum' 
+        }) }}
+        {{ form_row(registrationForm.agreeTerms) }}
+
+        <button type="submit" class="btn btn-primary">s'inscrire</button>
+    {{ form_end(registrationForm) }}
+{% endblock %}
+
+
+{# loption help permet d'afficher en gris le 6 caractere minimim #}

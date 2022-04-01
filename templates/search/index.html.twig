@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}MyScoreboard{% endblock %}
+
+
+{% block titreH1 %}Resultats de la recherche pour <code>{{word}}</code>{% endblock %}
+
+
+{% block body %}
+    {# <h5>Resultats de la recherche pour <code>{{word}}</code></h5> #}
+ 
+    <div class="card-columns"> 
+    {% for koko in jeux %}
+    <div class="card" style="width: 18rem;">
+    <div class="card-body">
+        <h5 class="card-title">{{koko.title}}</h5>
+        <h6 class="card-subtitle mb-2 text-muted">nombre de parties jouées : {{ koko.contests|length }}</h6>
+        <p class="card-text">
+            Entre {{koko.minPlayers}} et {{koko.maxPlayers}} joueurs
+        </p>
+    </div>
+    </div>
+    {% endfor %}
+    </div>
+
+
+{% endblock %}
+
+{% block footer %}{% endblock %}
+
+
+{# 1. Le titre H1 de la page doit être « Liste des parties »
+2. La date doit être affichée avec le format français
+3. Ajouter une ligne à la table principale pour afficher le vainqueur de la partie #}
+

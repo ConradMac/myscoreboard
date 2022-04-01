@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Profil utilisateur{% endblock %}
+
+{% block body %}
+
+{# Ici, nous créons apres avoir créer profil dans le terminal, la liste des fonctionnalités pour le profil de la personne. #}
+    <h2>Mes informations</h2>
+    <ul class="list-group">
+    <li class"list-group-item">Identifiant : {{ app.user.id }}</li>
+    <li class"list-group-item">Pseudo : {{ app.user.pseudo }}</li>
+    <li class"list-group-item">Mot de Passe : *****</li> 
+    {# {{ app.user.passwo }} ici on change le mot de passe avec **** comme on l'a fait dans le dossier XXXX #}
+    <li class"list-group-item">Autorisation : 
+        {% for role in app.user.roles %}
+        {# La condition ici sert à montrer tout les roles des utilisateurs #}
+            {% if role == 'ROLE_ADMIN' %} 
+                    Administrateur
+                {% elseif role == 'ROLE_PLAYER' %}
+                    joueur
+                {% elseif role == 'ROLE_REFEREE' %}
+                    Arbitre
+                {% else %}
+                    utilisateur
+                {% endif %}
+
+                {# {% if not loop,last %}
+                    ,
+                {% endif %} #}
+
+                {# La variable loop exsite dans une boucle for et contient dans informations sur les tours.
+                ex : loop.first (bool) qui vaut true si c'est le premier tour
+                     loop.last  (bool) qui veut dire true si c'est le dernier tour
+                     loop.index (int)  qui est égal au tour actuel1. #}
+                {{ not loop.last ? ',' : '' }} 
+        {% endfor %}
+
+    </li>
+</ul>
+
+<ul class="list-group">
+        <li class="list-group-item"><strong>Pseudo :</strong> {{ app.user.player ? app.user.player.nickname : "" }}</li>
+        <li class="list-group-item"><strong>Email :</strong> {{ app.user.player ? app.user.player.email : ""  }}</li>
+    </ul>
+{% endblock %}

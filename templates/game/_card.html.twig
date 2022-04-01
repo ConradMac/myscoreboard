@@ -1,0 +1,27 @@
+			<div class="card my-3" style="width: 18rem;">
+				<div class="card-body">
+					<h5 class="card-title">{{ koko.title}}</h5>
+					<h6 class="card-subtitle mb-2 text-muted">Nombre de paties jouées</h6>
+					<h6 class="card-subtitle mb-2 text-muted">{{koko.contests|length}}</h6>
+					<p class="card-text">Entre
+						{{koko.minPlayers}}
+						et
+						{{koko.maxPlayers}}
+						joueurs
+					</p>
+					<a href="{{ path('app_home_contest', {'title': koko.title}) }}" class="card-link">Commencer une partie</a>
+					{# <a href="#" class="card-link">Another link</a> #}
+				</div>
+				<p>
+					{% for partie in koko.contests %}
+						{% for joueur in partie.players %}
+							{{joueur.nickname}}
+						{% endfor %}
+					{% endfor %}
+				</p>
+			</div>
+
+
+{# Ce code a ete coupé du fichier index.html.twig de template de home 
+Il a créer le fichier _card.htmlm... et cela joue le role de template qui touche a une card et qui va toucher a la table Game
+cela evite d'avoir 30 000 fichier #}

@@ -1,0 +1,11 @@
+$primary: royalblue;
+$danger: red;
+$dark: black; 
+
+@import "~@fortawesome/fontawesome-free/css/all.min.css"; // code a rajouter le style boostrap
+@import "~bootstrap/scss/bootstrap";
+
+
+body {
+    background-color: lightgray;
+}
